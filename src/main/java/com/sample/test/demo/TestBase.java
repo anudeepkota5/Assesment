@@ -26,7 +26,9 @@ public class TestBase {
 
     private void navigateToSite() {
         ChromeOptions options = new ChromeOptions();
-    	options.addArguments("--headless");
+    	options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
         driver.get(url);
     }
 
