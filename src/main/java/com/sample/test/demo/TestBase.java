@@ -3,7 +3,6 @@ package com.sample.test.demo;
 import static org.testng.Assert.fail;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -29,6 +28,7 @@ public class TestBase {
     	options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.get(url);
     }
 
@@ -44,7 +44,6 @@ public class TestBase {
     private void initializelDriver() {
         if (config.getBrowser().equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
         }
         else {
             fail("Unsupported browser " + config.getBrowser());
