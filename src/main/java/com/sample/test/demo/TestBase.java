@@ -1,11 +1,14 @@
 package com.sample.test.demo;
 
 import static org.testng.Assert.fail;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 
@@ -38,12 +41,7 @@ public class TestBase {
 
     private void initializelDriver() {
         if (config.getBrowser().equalsIgnoreCase("chrome")) {
-            if (config.getPlatform().equalsIgnoreCase("mac")) {
-                System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver/mac/chromedriver");
-            } else {
-                System.setProperty("webdriver.chrome.driver",
-                        "src/test/resources/chromedriver/windows/chromedriver.exe");
-            }
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
         else {
@@ -51,6 +49,5 @@ public class TestBase {
         }
        
     }
-
 
 }
