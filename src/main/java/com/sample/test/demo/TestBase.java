@@ -21,6 +21,8 @@ public class TestBase {
     }
 
     private void navigateToSite() {
+        ChromeOptions options = new ChromeOptions();
+    	options.addArguments("--headless");
         driver.get(url);
     }
 
