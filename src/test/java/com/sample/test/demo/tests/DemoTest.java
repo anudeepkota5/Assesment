@@ -30,7 +30,9 @@ public class DemoTest extends TestBase {
         home.selectFrom(data.get("From")).selectTo(data.get("To")).clickfindFlights();
         
         flights = new FlightsPage(driver);
-        flights.chooseFlight("1", "Virgin America");
+        String colname = data.get("Choose Flight").split(":")[0];
+        String colvalue = data.get("Choose Flight").split(":")[1];
+        flights.chooseFlight(colname, colvalue);
         
         book = new BookingPage(driver);
         book.enterName(data.get("Name")).enterAddress(data.get("Address")).enterCity(data.get("City")).enterstate(data.get("State"))
