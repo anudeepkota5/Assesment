@@ -28,3 +28,5 @@ jobs:
       run: mvn test --file pom.xml
     - name: Publish Test Report
       uses: scacap/action-surefire-report@v1
+      with:
+         report_paths: '**/test-output/junitreports/TEST-*.xml'
