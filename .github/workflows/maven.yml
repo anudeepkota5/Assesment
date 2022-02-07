@@ -27,4 +27,6 @@ jobs:
     - name: Build with Maven
       run: mvn test --file pom.xml
     - name: Publish Test Report
-      uses: starburstdata/action-testng-report@v1
+      uses: scacap/action-surefire-report@v1
+      with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
